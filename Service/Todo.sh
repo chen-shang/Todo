@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC1091,SC2155
-source ./../../BaseShell/Utils/BaseHeader.sh
-source ./../../BaseShell/Date/BaseLocalDateTime.sh
+source ../../BaseShell/Starter/BaseHeader.sh
+source ../../BackUp/Date/BaseLocalDateTime.sh
 source ./../../BaseShell/Utils/BaseRandom.sh
 source ./../config.sh
 #===============================================================================
@@ -70,7 +70,7 @@ todo_add(){
   read -r -p "[优先级 5] " priority
   tag="${TAGS[index]}"
 
-  echo "${ICONS[$(random_next 17)]}︴${now}︴${realTitle}︴${tag:-work}︴${priority:-0}︴TODO︴${detail:--}" >> "${TODO_LIST}"
+  echo "${ICONS[$(random_int 17)]}︴${now}︴${realTitle}︴${tag:-work}︴${priority:-0}︴TODO︴${detail:--}" >> "${TODO_LIST}"
 }
 
 todo_done(){ _NotNull "$1" "id can not be null"
@@ -93,7 +93,7 @@ todo_remove(){ _NotNull "$1" "id can not be null"
   sed  -n "${id}p" "${TODO_LIST}" >> "${TODO_LIST_HISTORY}"
   # 删原纪录
   sed -i '' "${id}d" "${TODO_LIST}"
-  echo "remove: ${title}"
+  echo "delete: ${title}"
 }
 
 # 展示todo [List<String>]<-(file:String,id:int)
@@ -114,5 +114,4 @@ todo_show(){  _NotNull "$1" "file can not be null"
   fi
 }
 #===============================================================================
-source ./../../BaseShell/Utils/BaseEnd.sh
-    
+source ../../BaseShell/Starter/BaseEnd.sh
