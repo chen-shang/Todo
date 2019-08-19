@@ -55,7 +55,7 @@ todo(){
 
 # 添加todo
 todo_add(){
-  local now=$(localdatetime_now)
+  local now=$(date +%Y-%m-%dT%H:%M:%S)
   read -r -p "[标题] " title
   realTitle="${title}"
   if [[ -z "${title}" ]];then
